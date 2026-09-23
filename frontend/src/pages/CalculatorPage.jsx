@@ -1,10 +1,13 @@
 import React from 'react';
 import { EmiRoiCalculator } from '../components/tools/EmiRoiCalculator';
+import { SEO } from '../components/common/SEO';
+import { SEO_DATA } from '../components/common/SEOConfig';
 import { ShieldCheck, Sparkles, Building2, HelpCircle } from 'lucide-react';
 
 export const CalculatorPage = ({ onOpenEnquiry, onOpenSiteVisit }) => {
   return (
     <div className="min-h-screen bg-obsidian-950 py-12 text-slate-100">
+      <SEO {...SEO_DATA.calculator} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Header Breadcrumb / Intro */}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Video, Download, Eye, ExternalLink, Calendar, Tag, Play, X, ArrowRight, ShieldCheck } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
+import { SEO_DATA } from '../components/common/SEOConfig';
 
 export const ArticlesPage = ({ onOpenEnquiry }) => {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
@@ -68,6 +70,7 @@ export const ArticlesPage = ({ onOpenEnquiry }) => {
 
   return (
     <div className="min-h-screen bg-obsidian-950 py-16 text-slate-100">
+      <SEO {...SEO_DATA.articles} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Header Section */}

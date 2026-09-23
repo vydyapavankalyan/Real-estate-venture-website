@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { HeroSection } from '../components/home/HeroSection';
+import { SEO } from '../components/common/SEO';
+import { SEO_DATA } from '../components/common/SEOConfig';
 import { SearchBar } from '../components/home/SearchBar';
 import { ProjectCard } from '../components/projects/ProjectCard';
 import { ServicesSection } from '../components/home/ServicesSection';
 import { ValuesSection } from '../components/home/ValuesSection';
 import { WhyInvestSection } from '../components/home/WhyInvestSection';
+import { TestimonialsSection } from '../components/home/TestimonialsSection';
+import { StatsCounter } from '../components/home/StatsCounter';
 import { EmiRoiCalculator } from '../components/tools/EmiRoiCalculator';
 import { projectService } from '../services/projectService';
 import { ArrowRight, Sparkles, Building, Star, CheckCircle, Shield, Award, Phone, Video, Play } from 'lucide-react';
@@ -27,6 +31,7 @@ export const HomePage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
 
   return (
     <div className="space-y-0">
+      <SEO {...SEO_DATA.home} />
       
       {/* 1. Hero Section */}
       <HeroSection onOpenSiteVisit={onOpenSiteVisit} onOpenEnquiry={onOpenEnquiry} />
@@ -292,10 +297,16 @@ export const HomePage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
       {/* 9. Core Values Section */}
       <ValuesSection />
 
-      {/* 9. Why Invest Section */}
+      {/* 10. Why Invest Section */}
       <WhyInvestSection />
 
-      {/* 10. Call to Action Banner */}
+      {/* 11. Client Testimonials Section */}
+      <TestimonialsSection onOpenEnquiry={onOpenEnquiry} onOpenSiteVisit={onOpenSiteVisit} />
+
+      {/* 12. Animated Stats Counter */}
+      <StatsCounter />
+
+      {/* 13. Call to Action Banner */}
       <section className="py-20 bg-gradient-to-r from-gold-600 via-gold-500 to-gold-700 text-obsidian-950 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6 relative z-10">
           <span className="text-xs uppercase tracking-widest font-bold text-obsidian-900/80 font-serif">

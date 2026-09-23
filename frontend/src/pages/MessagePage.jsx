@@ -1,9 +1,12 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Award, CheckCircle2, TrendingUp, Sparkles, Building2, ArrowRight } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
+import { SEO_DATA } from '../components/common/SEOConfig';
 
 export const MessagePage = ({ onOpenEnquiry, onOpenSiteVisit }) => {
   return (
     <div className="min-h-screen bg-obsidian-950 py-16 text-slate-100">
+      <SEO {...SEO_DATA.message} />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Breadcrumb & Header */}

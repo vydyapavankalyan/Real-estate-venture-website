@@ -1,10 +1,13 @@
 import React from 'react';
 import { Building2, Award, Users, ShieldCheck, HeartHandshake, Leaf, CheckCircle2 } from 'lucide-react';
 import { ValuesSection } from '../components/home/ValuesSection';
+import { SEO } from '../components/common/SEO';
+import { SEO_DATA } from '../components/common/SEOConfig';
 
 export const AboutPage = ({ onOpenEnquiry }) => {
   return (
     <div className="min-h-screen bg-obsidian-950 py-16 text-slate-100 space-y-20">
+      <SEO {...SEO_DATA.about} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Story Section */}

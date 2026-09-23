@@ -8,6 +8,7 @@ import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
 import { MobileStickyBar } from './components/common/MobileStickyBar';
 import { WhatsAppWidget } from './components/common/WhatsAppWidget';
+import { ScrollToTopButton } from './components/common/ScrollToTopButton';
 import { EnquiryModal } from './components/leads/EnquiryModal';
 import { SiteVisitModal } from './components/leads/SiteVisitModal';
 
@@ -441,6 +442,7 @@ export function AppContent() {
 
       {/* Floating 24/7 WhatsApp Concierge Widget */}
       <WhatsAppWidget />
+      <ScrollToTopButton />
     </>
   );
 }

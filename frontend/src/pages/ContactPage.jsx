@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, MessageSquare, Send, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { leadService } from '../services/allServices';
+import { SEO } from '../components/common/SEO';
+import { SEO_DATA } from '../components/common/SEOConfig';
 
 export const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -35,6 +37,7 @@ export const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-obsidian-950 py-16 text-slate-100">
+      <SEO {...SEO_DATA.contact} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Header */}

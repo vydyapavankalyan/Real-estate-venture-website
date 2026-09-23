@@ -1,5 +1,7 @@
 import React from 'react';
 import { Search, LineChart, Building, Users, TrendingUp, Scale, CheckCircle2, Phone } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
+import { SEO_DATA } from '../components/common/SEOConfig';
 
 export const ServicesPage = ({ onOpenEnquiry, onOpenSiteVisit }) => {
   const serviceList = [
@@ -37,6 +39,7 @@ export const ServicesPage = ({ onOpenEnquiry, onOpenSiteVisit }) => {
 
   return (
     <div className="min-h-screen bg-obsidian-950 py-16 text-slate-100">
+      <SEO {...SEO_DATA.services} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Header */}

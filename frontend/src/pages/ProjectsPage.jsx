@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation as useRouterLocation, Link } from 'react-router-dom';
+import { SEO } from '../components/common/SEO';
+import { SEO_DATA } from '../components/common/SEOConfig';
 import { projectService } from '../services/projectService';
 import { locationService } from '../services/allServices';
 import { ProjectCard } from '../components/projects/ProjectCard';
@@ -72,6 +74,7 @@ export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
 
   return (
     <div className="min-h-screen bg-obsidian-950 py-12">
+      <SEO {...SEO_DATA.projects} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Header */}
