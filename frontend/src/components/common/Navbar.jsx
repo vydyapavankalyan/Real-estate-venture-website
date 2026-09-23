@@ -14,6 +14,7 @@ export const Navbar = ({ onOpenSiteVisit, onOpenEnquiry }) => {
     { name: 'Services', path: '/services' },
     { name: 'Articles', path: '/articles' },
     { name: 'Fourth City', path: '/future-development' },
+    { name: 'Calculator', path: '/calculator' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];

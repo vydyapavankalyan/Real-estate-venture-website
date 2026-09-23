@@ -5,6 +5,7 @@ import { ProjectCard } from '../components/projects/ProjectCard';
 import { ServicesSection } from '../components/home/ServicesSection';
 import { ValuesSection } from '../components/home/ValuesSection';
 import { WhyInvestSection } from '../components/home/WhyInvestSection';
+import { EmiRoiCalculator } from '../components/tools/EmiRoiCalculator';
 import { projectService } from '../services/projectService';
 import { ArrowRight, Sparkles, Building, Star, CheckCircle, Shield, Award, Phone, Video, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -285,7 +286,10 @@ export const HomePage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
         </div>
       </section>
 
-      {/* 8. Core Values Section */}
+      {/* 8. Interactive ROI & EMI Calculator */}
+      <EmiRoiCalculator onOpenEnquiry={onOpenEnquiry} onOpenSiteVisit={onOpenSiteVisit} />
+
+      {/* 9. Core Values Section */}
       <ValuesSection />
 
       {/* 9. Why Invest Section */}

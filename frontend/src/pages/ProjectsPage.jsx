@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation as useRouterLocation } from 'react-router-dom';
+import { useLocation as useRouterLocation, Link } from 'react-router-dom';
 import { projectService } from '../services/projectService';
 import { locationService } from '../services/allServices';
 import { ProjectCard } from '../components/projects/ProjectCard';
-import { Search, Filter, SlidersHorizontal, MapPin, Building, RotateCcw, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Search, Filter, SlidersHorizontal, MapPin, Building, RotateCcw, Sparkles, CheckCircle2, ArrowRight, Calculator } from 'lucide-react';
 
 export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
   const routerLocation = useRouterLocation();
@@ -325,6 +325,29 @@ export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
             ))}
           </div>
         )}
+
+        {/* Investment ROI & EMI Tool Banner */}
+        <div className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-obsidian-900 via-obsidian-850 to-obsidian-900 border border-gold-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-luxury">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+              <Calculator className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="font-serif text-lg font-bold text-white">Plan Your Investment: Home Loan EMI & Fourth City ROI</h3>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Simulate potential capital appreciation in Mirkhanpet & Maheshwaram or estimate monthly loan installments.
+              </p>
+            </div>
+          </div>
+
+          <Link
+            to="/calculator"
+            className="px-6 py-3 rounded-xl bg-gold-500 hover:bg-gold-400 text-obsidian-950 font-bold text-xs uppercase tracking-wider transition-all shadow flex items-center gap-2 shrink-0"
+          >
+            <span>Launch Financial Calculator</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
 
       </div>
     </div>

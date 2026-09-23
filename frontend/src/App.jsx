@@ -7,6 +7,7 @@ import { projectService } from './services/projectService';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
 import { MobileStickyBar } from './components/common/MobileStickyBar';
+import { WhatsAppWidget } from './components/common/WhatsAppWidget';
 import { EnquiryModal } from './components/leads/EnquiryModal';
 import { SiteVisitModal } from './components/leads/SiteVisitModal';
 
@@ -21,6 +22,7 @@ import { MessagePage } from './pages/MessagePage';
 import { ArticlesPage } from './pages/ArticlesPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
+import { CalculatorPage } from './pages/CalculatorPage';
 import { LoginPage } from './pages/LoginPage';
 
 // Admin Pages & Layout
@@ -379,6 +381,29 @@ export function AppContent() {
         />
 
         <Route
+          path="/calculator"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <CalculatorPage
+                  onOpenEnquiry={handleOpenEnquiry}
+                  onOpenSiteVisit={handleOpenSiteVisit}
+                />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        <Route
           path="/login"
           element={
             <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100">
@@ -413,6 +438,9 @@ export function AppContent() {
         {/* Catch-all redirect */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+
+      {/* Floating 24/7 WhatsApp Concierge Widget */}
+      <WhatsAppWidget />
     </>
   );
 }
