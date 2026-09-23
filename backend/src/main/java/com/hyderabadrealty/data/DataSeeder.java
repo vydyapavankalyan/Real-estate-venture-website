@@ -59,6 +59,7 @@ public class DataSeeder implements CommandLineRunner {
         seedTestimonials();
         seedBlogPosts();
         seedLeadsAndVisits();
+        seedFourthCityData();
 
         log.info("Seed check completed successfully.");
     }
@@ -822,5 +823,143 @@ public class DataSeeder implements CommandLineRunner {
 
         siteVisitRepository.saveAll(visits);
         log.info("Seeded sample leads and site visits.");
+    }
+
+    private void seedFourthCityData() {
+        if (locationRepository.findBySlug("mirkhanpet").isEmpty()) {
+            Location mirkhanpet = Location.builder()
+                    .name("Mirkhanpet")
+                    .slug("mirkhanpet")
+                    .zone("FOURTH_CITY")
+                    .latitude(17.1120)
+                    .longitude(78.5340)
+                    .description("Epicentre of Telangana's emerging Fourth City, home to Young India Skill University and Amazon's ₹5,809 Cr Data Center.")
+                    .overview("Positioned on the 200-foot road and upcoming 300ft greenfield highway from Raviryal. Mirkhanpet is Telangana's prime future city growth corridor.")
+                    .pricePerSqFtRange("₹3,500 - ₹5,500 / sq.ft*")
+                    .growthProspects("Unrivaled capital growth backed by Young India Skill University, Amazon Data Centers, and Regional Ring Road.")
+                    .heroImageUrl("https://www.rajan-castle-properties.net/lovable-uploads/9f109d9e-f8fa-4c04-9826-5c7d09a29871.png")
+                    .connectivityHighlights(List.of(
+                            "200-foot road facing & 330-foot road connectivity",
+                            "Upcoming 300ft Greenfield Highway from Raviryal",
+                            "Proposed Regional Ring Road (RRR) junction",
+                            "20 mins to Rajiv Gandhi International Airport"
+                    ))
+                    .featured(true)
+                    .active(true)
+                    .build();
+
+            Location maheshwaram = Location.builder()
+                    .name("Maheshwaram")
+                    .slug("maheshwaram")
+                    .zone("FOURTH_CITY")
+                    .latitude(17.1350)
+                    .longitude(78.4320)
+                    .description("High-growth southern corridor along Srisailam Highway, connecting RGIA Shamshabad with the Fourth City.")
+                    .pricePerSqFtRange("₹3,000 - ₹4,800 / sq.ft*")
+                    .heroImageUrl("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=80")
+                    .featured(true)
+                    .active(true)
+                    .build();
+
+            Location kadthal = Location.builder()
+                    .name("Kadthal")
+                    .slug("kadthal")
+                    .zone("FOURTH_CITY")
+                    .latitude(17.0780)
+                    .longitude(78.4890)
+                    .description("Serene eco-living hub in close proximity to Pharma City and the upcoming Regional Ring Road junction.")
+                    .pricePerSqFtRange("₹2,500 - ₹4,000 / sq.ft*")
+                    .heroImageUrl("https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1400&q=80")
+                    .featured(false)
+                    .active(true)
+                    .build();
+
+            locationRepository.saveAll(List.of(mirkhanpet, maheshwaram, kadthal));
+            log.info("Seeded Fourth City locations: Mirkhanpet, Maheshwaram, Kadthal.");
+        }
+
+        if (projectRepository.findBySlug("rajan-castle-pride-mirkhanpet").isEmpty()) {
+            Project mirkhanpetProject = Project.builder()
+                    .projectName("Rajan Castle Pride - Mirkhanpet")
+                    .slug("rajan-castle-pride-mirkhanpet")
+                    .developer("Rajan - Castle Properties")
+                    .tagline("Prime Township on 200ft Road in Telangana's Fourth City")
+                    .location(ProjectLocation.builder()
+                            .area("Mirkhanpet")
+                            .city("Hyderabad")
+                            .state("Telangana")
+                            .address("200-Foot Arterial Road, Near Skill University, Mirkhanpet")
+                            .latitude(17.1120)
+                            .longitude(78.5340)
+                            .build())
+                    .propertyType("PLOT")
+                    .configurations(List.of("Villa Plots (200 - 600 Sq. Yds)"))
+                    .price(ProjectPrice.builder()
+                            .startingFrom(6500000)
+                            .priceDisplay("Starting from ₹65 Lakhs*")
+                            .build())
+                    .status(ProjectStatus.UPCOMING)
+                    .reraNumber("P0240000XXXX (Placeholder)")
+                    .description("Our flagship township in Mirkhanpet Fourth City, strategically positioned on a prime 200-foot road facing parcel with 330-foot road connectivity. Walking distance to Young India Skill University and minutes from the ₹5,809 Cr Amazon Data Center campus.")
+                    .landArea("25 Acres")
+                    .totalUnits(160)
+                    .totalTowers("Plotted Gated Township")
+                    .possessionDate("December 2027")
+                    .amenities(List.of(
+                            "200-Foot Road Facing Frontage",
+                            "330-Foot Road Arterial Connectivity",
+                            "Underground Electricity & Fiber Cabling",
+                            "Avenue Plantation & Green Parks",
+                            "40-Foot Internal BT Roads",
+                            "Grand Entrance Arch with 24x7 Security",
+                            "Next to Young India Skill University",
+                            "Near Amazon Data Center"
+                    ))
+                    .gallery(List.of(
+                            new ProjectImage("https://www.rajan-castle-properties.net/lovable-uploads/9f109d9e-f8fa-4c04-9826-5c7d09a29871.png", "Master Plan & Layout", "MASTER_PLAN", 1, true),
+                            new ProjectImage("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80", "Grand Entrance & Boulevard", "EXTERIOR", 2, false),
+                            new ProjectImage("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80", "Landscape Parks", "AMENITY", 3, false)
+                    ))
+                    .featured(true)
+                    .published(true)
+                    .build();
+
+            Project maheshwaramProject = Project.builder()
+                    .projectName("Rajan Castle Emerald - Maheshwaram")
+                    .slug("rajan-castle-emerald-maheshwaram")
+                    .developer("Rajan - Castle Properties")
+                    .tagline("Smart Luxury Living on Srisailam Highway Corridor")
+                    .location(ProjectLocation.builder()
+                            .area("Maheshwaram")
+                            .city("Hyderabad")
+                            .state("Telangana")
+                            .address("Srisailam Highway, Maheshwaram Hub")
+                            .latitude(17.1350)
+                            .longitude(78.4320)
+                            .build())
+                    .propertyType("VILLA")
+                    .configurations(List.of("3 BHK Villas", "4 BHK Villas"))
+                    .price(ProjectPrice.builder()
+                            .startingFrom(8500000)
+                            .priceDisplay("Starting from ₹85 Lakhs*")
+                            .build())
+                    .status(ProjectStatus.UPCOMING)
+                    .reraNumber("P0240000XXXX (Placeholder)")
+                    .description("Smart, sustainable villa community strategically located on the Srisailam Highway connecting Shamshabad Airport with Fourth City.")
+                    .landArea("15 Acres")
+                    .totalUnits(85)
+                    .totalTowers("Gated Villa Community")
+                    .possessionDate("June 2028")
+                    .amenities(List.of("Clubhouse", "Swimming Pool", "Solar Street Lighting", "Landscaped Gardens", "Children Play Area"))
+                    .gallery(List.of(
+                            new ProjectImage("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80", "Modern Villa Elevation", "EXTERIOR", 1, true)
+                    ))
+                    .featured(true)
+                    .published(true)
+                    .build();
+
+            projectRepository.saveAll(List.of(mirkhanpetProject, maheshwaramProject));
+            log.info("Seeded Fourth City projects: Rajan Castle Pride and Rajan Castle Emerald.");
+        }
     }
 }

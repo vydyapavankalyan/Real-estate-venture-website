@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Building2, Shield, Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
+import { Building2, Shield, Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -15,72 +15,77 @@ export const Footer = () => {
                 <Building2 className="w-5 h-5" />
               </div>
               <span className="font-serif tracking-widest text-lg font-bold text-white uppercase">
-                AURUM <span className="text-gold-400">HYDERABAD</span>
+                RAJAN <span className="text-gold-400">CASTLE</span> PROPERTIES
               </span>
             </div>
-            <p className="text-sm text-slate-300 leading-relaxed font-serif italic text-gold-200/80">
-              "Discover Better Living. Invest in Hyderabad's Future."
+            <p className="text-sm text-slate-300 leading-relaxed font-serif italic text-gold-200/90">
+              "Your trusted partner in finding exceptional properties. We make real estate dreams come true."
             </p>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Premier real estate venture platform dedicated to curating high-growth residential towers, luxury villas, and prime investment destinations across West and South Hyderabad.
+              With over 15 years of industry experience, Rajan - Castle Properties specializes in high-yield investments across Hyderabad and Telangana's emerging Fourth City (Mirkhanpet, Maheshwaram, and Kadthal).
             </p>
-            <div className="pt-2 text-xs space-y-1.5 text-slate-300">
+            <div className="pt-2 text-xs space-y-2 text-slate-300">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-gold-400 shrink-0" />
-                <span>Level 14, Aurum One Tower, Financial District, Hyderabad - 500032</span>
+                <span>Hyderabad, Telangana, 500074 / 500070</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-gold-400 shrink-0" />
-                <span>+91 98490 00000 (Mon - Sun, 9:00 AM - 8:00 PM IST)</span>
+                <span>+91 9090104949</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-gold-400 shrink-0" />
-                <span>concierge@hyderabadrealty.com</span>
+                <span>katla.bhagyarajan@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-3.5 h-3.5 text-gold-400 shrink-0" />
+                <span>Mon-Fri: 9:00 AM - 6:00 PM | Sat-Sun: 10:00 AM - 4:00 PM</span>
               </div>
             </div>
           </div>
 
-          {/* Premier Corridors */}
+          {/* Quick Links */}
           <div className="space-y-3">
             <h4 className="text-xs uppercase tracking-widest font-semibold text-white font-serif">
-              Growth Corridors
+              Quick Links
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><Link to="/projects?location=Kokapet" className="hover:text-gold-400 transition-colors">Kokapet Golden Mile</Link></li>
-              <li><Link to="/projects?location=Neopolis" className="hover:text-gold-400 transition-colors">Neopolis Sky Mansions</Link></li>
-              <li><Link to="/projects?location=Financial%20District" className="hover:text-gold-400 transition-colors">Financial District Core</Link></li>
-              <li><Link to="/projects?location=Tellapur" className="hover:text-gold-400 transition-colors">Tellapur Gated Villas</Link></li>
-              <li><Link to="/projects?location=Narsingi" className="hover:text-gold-400 transition-colors">Narsingi Lakefront</Link></li>
-              <li><Link to="/projects?location=Shamshabad" className="hover:text-gold-400 transition-colors">Shamshabad Aerotropolis</Link></li>
+              <li><Link to="/" className="hover:text-gold-400 transition-colors">Home</Link></li>
+              <li><Link to="/properties" className="hover:text-gold-400 transition-colors">Projects</Link></li>
+              <li><Link to="/message" className="hover:text-gold-400 transition-colors">Founder's Message</Link></li>
+              <li><Link to="/services" className="hover:text-gold-400 transition-colors">Our Services</Link></li>
+              <li><Link to="/articles" className="hover:text-gold-400 transition-colors">Articles & Videos</Link></li>
+              <li><Link to="/about" className="hover:text-gold-400 transition-colors">About Us</Link></li>
+              <li><Link to="/contact" className="hover:text-gold-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
 
-          {/* Quick Portals */}
+          {/* Fourth City Focus */}
           <div className="space-y-3">
             <h4 className="text-xs uppercase tracking-widest font-semibold text-white font-serif">
-              Venture Platform
+              Fourth City Hubs
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><Link to="/projects" className="hover:text-gold-400 transition-colors">Featured Projects</Link></li>
-              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">Future Hyderabad Tracker</Link></li>
-              <li><Link to="/insights" className="hover:text-gold-400 transition-colors">Market Insights & RERA</Link></li>
-              <li><Link to="/about" className="hover:text-gold-400 transition-colors">About Aurum Group</Link></li>
-              <li><Link to="/contact" className="hover:text-gold-400 transition-colors">Contact Concierge</Link></li>
-              <li><Link to="/admin" className="hover:text-gold-400 transition-colors">Staff CRM Portal</Link></li>
+              <li><Link to="/properties?location=Mirkhanpet" className="hover:text-gold-400 transition-colors">Mirkhanpet Skill Univ Hub</Link></li>
+              <li><Link to="/properties?location=Maheshwaram" className="hover:text-gold-400 transition-colors">Maheshwaram Highway</Link></li>
+              <li><Link to="/properties?location=Kadthal" className="hover:text-gold-400 transition-colors">Kadthal Green Living</Link></li>
+              <li><Link to="/properties?location=Kokapet" className="hover:text-gold-400 transition-colors">Kokapet Golden Mile</Link></li>
+              <li><Link to="/properties?location=Neopolis" className="hover:text-gold-400 transition-colors">Neopolis Towers</Link></li>
+              <li><Link to="/properties?location=Financial%20District" className="hover:text-gold-400 transition-colors">Financial District Core</Link></li>
             </ul>
           </div>
 
           {/* Infrastructure Themes */}
           <div className="space-y-3">
             <h4 className="text-xs uppercase tracking-widest font-semibold text-white font-serif">
-              Building The Future
+              Infrastructure
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">Airport Express Metro</Link></li>
-              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">340 km Regional Ring Road</Link></li>
-              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">Telangana AI City</Link></li>
-              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">Pharma City & Bio-Cluster</Link></li>
-              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">Foxconn Electronics City</Link></li>
+              <li><Link to="/articles" className="hover:text-gold-400 transition-colors">Young India Skill University</Link></li>
+              <li><Link to="/articles" className="hover:text-gold-400 transition-colors">Amazon Data Center (₹5,809 Cr)</Link></li>
+              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">300ft Greenfield Highway</Link></li>
+              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">330ft Road Connectivity</Link></li>
+              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">Regional Ring Road (RRR)</Link></li>
             </ul>
           </div>
         </div>
@@ -92,17 +97,16 @@ export const Footer = () => {
             <span>Official Regulatory Disclaimer & RERA Transparency Statement</span>
           </div>
           <p>
-            Information on this website is subject to change. Project availability, pricing, specifications, approvals and timelines should be independently verified before making a purchase or investment decision. All project photographs, architectural renders, floor plans, and amenities are artist impressions unless specified. RERA numbers provided are sample placeholders for development demonstration. We do not provide speculative guarantees of appreciation or financial return.
+            Information on this website is subject to change. Project availability, pricing, specifications, approvals and timelines should be independently verified before making a purchase or investment decision. All project photographs, architectural renders, floor plans, and amenities are artist impressions unless specified. RERA numbers provided are sample placeholders for development demonstration.
           </p>
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-300 pt-6 border-t border-white/5 gap-4">
-          <p>© 2026 Aurum Hyderabad Real Estate Platform. All rights reserved.</p>
+        <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 pt-6 border-t border-white/5 gap-4">
+          <p>© 2026 Rajan - Castle Properties. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link to="/privacy" className="hover:text-gold-400">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-gold-400">Terms of Use</Link>
-            <Link to="/disclaimer" className="hover:text-gold-400">Disclaimer</Link>
+            <Link to="/contact" className="hover:text-gold-400">Contact Concierge</Link>
+            <Link to="/admin" className="hover:text-gold-400">Staff Portal</Link>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { useLocation as useRouterLocation } from 'react-router-dom';
 import { projectService } from '../services/projectService';
 import { locationService } from '../services/allServices';
 import { ProjectCard } from '../components/projects/ProjectCard';
-import { Search, Filter, SlidersHorizontal, MapPin, Building, RotateCcw } from 'lucide-react';
+import { Search, Filter, SlidersHorizontal, MapPin, Building, RotateCcw, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
   const routerLocation = useRouterLocation();
@@ -72,19 +72,118 @@ export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
 
   return (
     <div className="min-h-screen bg-obsidian-950 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Header */}
         <div className="space-y-2">
           <span className="text-xs font-serif uppercase tracking-widest text-gold-400 font-bold">
-            Hyderabad Real Estate Portfolio
+            Real Estate Portfolio
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-bold text-white">
-            Explore Premium Developments
+            Projects & Future Investment Opportunities
           </h1>
           <p className="text-sm text-slate-400 max-w-2xl">
-            Filter through carefully verified high-rise residences, sky villas, and gated estates in Hyderabad's premier investment vectors.
+            Explore exclusive developments across Hyderabad and the transformative Telangana Fourth City growth corridors.
           </p>
+        </div>
+
+        {/* ============================================================== */}
+        {/* 🌟 FOURTH CITY & MIRKHANPET UPCOMING SHOWCASE (REFERENCE WEB)  */}
+        {/* ============================================================== */}
+        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-obsidian-900 via-obsidian-850 to-obsidian-950 border-2 border-gold-500/30 shadow-luxury space-y-8">
+          
+          <div className="text-center space-y-2">
+            <span className="text-xs font-serif uppercase tracking-widest text-gold-400 font-bold">
+              Flagship Announcement
+            </span>
+            <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white">
+              Upcoming Projects — Rajan Castle Properties
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Left: Strategic Location Details */}
+            <div className="lg:col-span-7 space-y-5">
+              <div>
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-2">
+                  Strategic Location in Mirkhanpet (Fourth City)
+                </h3>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  Our upcoming landmark projects will be strategically located in <strong className="text-gold-400 font-bold">Mirkhanpet</strong>, positioned closely to the <strong className="text-gold-400 font-bold">Skill University</strong> and the <strong className="text-gold-400 font-bold">Amazon Data Center</strong>.
+                </p>
+              </div>
+
+              <div className="space-y-3 text-xs sm:text-sm text-slate-200">
+                <div className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10">
+                  <div className="w-2 h-2 rounded-full bg-gold-400 mt-1.5 shrink-0" />
+                  <p>
+                    <strong className="text-white">200-foot road facing</strong> — Prime location with maximum visibility and high-speed accessibility.
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10">
+                  <div className="w-2 h-2 rounded-full bg-gold-400 mt-1.5 shrink-0" />
+                  <p>
+                    <strong className="text-white">330-foot road connectivity</strong> — Government-approved arterial infrastructure ensuring seamless regional transport.
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10">
+                  <div className="w-2 h-2 rounded-full bg-gold-400 mt-1.5 shrink-0" />
+                  <p>
+                    <strong className="text-white">Future-ready investment</strong> — Positioned at the epicentre of Telangana's emerging Fourth City across Mirkhanpet, Maheshwaram, and Kadthal.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <button
+                  onClick={() => onOpenEnquiry && onOpenEnquiry({ message: 'Requesting allocation details and priority booking for upcoming Mirkhanpet Fourth City projects' })}
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-obsidian-950 font-bold text-xs uppercase tracking-wider shadow hover:from-gold-400 hover:to-gold-500 transition-all flex items-center gap-2"
+                >
+                  <span>Register Priority Interest</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <a
+                  href="tel:+919090104949"
+                  className="px-5 py-3 rounded-xl bg-white/5 border border-white/15 text-white hover:text-gold-400 text-xs font-semibold uppercase tracking-wider transition-colors"
+                >
+                  Direct Call: +91 9090104949
+                </a>
+              </div>
+            </div>
+
+            {/* Right: Key Advantages Cards */}
+            <div className="lg:col-span-5 space-y-3.5">
+              <h4 className="font-serif text-sm font-bold uppercase tracking-wider text-gold-400 mb-2">
+                Key Strategic Advantages
+              </h4>
+
+              <div className="p-4 rounded-2xl bg-black/40 border border-gold-500/20 space-y-1">
+                <span className="font-bold text-white text-sm block">📍 Prime Location</span>
+                <p className="text-xs text-slate-400">
+                  Close proximity to major educational hubs, Rajiv Gandhi International Airport, and Outer Ring Road.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-black/40 border border-gold-500/20 space-y-1">
+                <span className="font-bold text-white text-sm block">🛣️ Superior Connectivity</span>
+                <p className="text-xs text-slate-400">
+                  Newly constructed 300ft greenfield highway from Raviryal to Meerkhanpet plus proposed Regional Ring Road (RRR).
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-black/40 border border-gold-500/20 space-y-1">
+                <span className="font-bold text-white text-sm block">💼 High-Capital Economic Drivers</span>
+                <p className="text-xs text-slate-400">
+                  Amazon Data Center proposed over 48+ acres with ₹5,809 Crores investment & Young India Skill University.
+                </p>
+              </div>
+            </div>
+
+          </div>
         </div>
 
         {/* Filter Controls Bar */}
@@ -97,7 +196,7 @@ export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Project name or developer..."
+                  placeholder="Project name, corridor..."
                   value={filters.query}
                   onChange={(e) => setFilters({ ...filters, query: e.target.value })}
                   onKeyDown={(e) => e.key === 'Enter' && fetchProjects()}
@@ -131,100 +230,91 @@ export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
                 onChange={(e) => setFilters({ ...filters, propertyType: e.target.value })}
                 className="w-full px-3 py-2 text-xs rounded-lg bg-obsidian-950 border border-white/15 text-white focus:outline-none focus:border-gold-500"
               >
-                <option value="">All Property Types</option>
-                <option value="APARTMENT">Apartments / High-Rise</option>
-                <option value="VILLA">Luxury Gated Villas</option>
-                <option value="PLOT">Villa Plots</option>
-                <option value="COMMERCIAL">Commercial Spaces</option>
-              </select>
-            </div>
-
-            {/* Configuration */}
-            <div>
-              <label className="block text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Configuration</label>
-              <select
-                value={filters.bhk}
-                onChange={(e) => setFilters({ ...filters, bhk: e.target.value })}
-                className="w-full px-3 py-2 text-xs rounded-lg bg-obsidian-950 border border-white/15 text-white focus:outline-none focus:border-gold-500"
-              >
-                <option value="">Any BHK</option>
-                <option value="2 BHK">2 BHK</option>
-                <option value="3 BHK">3 BHK</option>
-                <option value="4 BHK">4 BHK</option>
-                <option value="PENTHOUSE">Penthouse / Sky Mansion</option>
+                <option value="">All Types</option>
+                <option value="APARTMENT">Sky Apartments</option>
+                <option value="VILLA">Gated Villas</option>
+                <option value="PLOT">Open Plots / Townships</option>
+                <option value="COMMERCIAL">Commercial / Mixed Use</option>
               </select>
             </div>
 
             {/* Status */}
             <div>
-              <label className="block text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Possession Status</label>
+              <label className="block text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Status</label>
               <select
                 value={filters.status}
                 onChange={(e) => setFilters({ ...filters, status: e.target.value })}
                 className="w-full px-3 py-2 text-xs rounded-lg bg-obsidian-950 border border-white/15 text-white focus:outline-none focus:border-gold-500"
               >
                 <option value="">All Statuses</option>
-                <option value="READY_TO_MOVE">Ready To Move</option>
                 <option value="UNDER_CONSTRUCTION">Under Construction</option>
-                <option value="UPCOMING">Upcoming / Pre-Launch</option>
+                <option value="READY_TO_MOVE">Ready To Move</option>
+                <option value="UPCOMING">Upcoming / New Launch</option>
               </select>
             </div>
-          </div>
 
-          {/* Bottom row of filter bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between pt-2 border-t border-white/10 gap-3 text-xs">
-            <div className="flex items-center gap-3">
-              <span className="text-slate-400 font-medium">
-                Showing <strong className="text-white">{projects.length}</strong> of {totalElements} ventures
-              </span>
-              <button
-                onClick={handleReset}
-                className="flex items-center gap-1 text-slate-400 hover:text-gold-400 transition-colors"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Reset Filters</span>
-              </button>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <label className="text-slate-400">Sort By:</label>
+            {/* Sort */}
+            <div>
+              <label className="block text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Sort By</label>
               <select
                 value={filters.sortBy}
                 onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
-                className="px-3 py-1.5 rounded-lg bg-obsidian-950 border border-white/15 text-white focus:outline-none focus:border-gold-500 text-xs"
+                className="w-full px-3 py-2 text-xs rounded-lg bg-obsidian-950 border border-white/15 text-white focus:outline-none focus:border-gold-500"
               >
                 <option value="featured">Featured First</option>
                 <option value="price_asc">Price: Low to High</option>
                 <option value="price_desc">Price: High to Low</option>
-                <option value="newest">Newest Additions</option>
               </select>
+            </div>
+
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex items-center justify-between pt-2 border-t border-white/5">
+            <span className="text-xs text-slate-400">
+              Showing <strong className="text-white">{projects.length}</strong> of {totalElements} properties
+            </span>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleReset}
+                className="px-3 py-1.5 rounded-lg text-xs text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset</span>
+              </button>
+              <button
+                onClick={fetchProjects}
+                className="px-5 py-2 rounded-lg bg-gold-500 text-obsidian-950 font-bold text-xs uppercase tracking-wider hover:bg-gold-400 transition-colors shadow"
+              >
+                Apply Filters
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Project Listings Grid */}
+        {/* Projects Listing Grid */}
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <div key={n} className="h-96 rounded-2xl bg-obsidian-900 border border-white/5 animate-pulse" />
             ))}
           </div>
         ) : projects.length === 0 ? (
-          <div className="p-16 rounded-2xl bg-obsidian-900 border border-white/10 text-center space-y-4">
+          <div className="text-center py-20 bg-obsidian-900/50 rounded-2xl border border-white/5 space-y-4">
             <Building className="w-12 h-12 text-slate-600 mx-auto" />
-            <h3 className="font-serif text-2xl font-bold text-white">No Properties Found</h3>
-            <p className="text-xs text-slate-400 max-w-md mx-auto">
-              No ventures matched your selected criteria. Try resetting filters or exploring other corridors.
+            <h3 className="font-serif text-xl font-bold text-white">No properties matched your criteria</h3>
+            <p className="text-xs text-slate-400 max-w-sm mx-auto">
+              Try adjusting your corridor filters or reset your search parameters to view our complete portfolio.
             </p>
             <button
               onClick={handleReset}
-              className="px-6 py-2.5 rounded-lg bg-gold-500 text-obsidian-950 font-bold text-xs"
+              className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition-colors"
             >
               Clear All Filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
               <ProjectCard
                 key={project.id}

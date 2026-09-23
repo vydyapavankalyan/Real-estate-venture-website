@@ -64,7 +64,7 @@ export const ContactPage = () => {
                   <MapPin className="w-5 h-5 text-gold-400 shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-white block mb-0.5">Physical Address</strong>
-                    <span>Level 14, Aurum One Tower, Nanakramguda Main Road, Financial District, Hyderabad, Telangana - 500032</span>
+                    <span>Hyderabad, Telangana - 500074 / 500070 (Registered Office)</span>
                   </div>
                 </div>
 
@@ -75,7 +75,7 @@ export const ContactPage = () => {
                     <a href="tel:+919090104949" className="font-mono text-gold-300 hover:underline block text-sm font-semibold">
                       +91 9090104949
                     </a>
-                    <span className="text-[11px] text-slate-400">Direct Sales & Investor Concierge</span>
+                    <span className="text-[11px] text-slate-400">Direct Desk: Mr. Katla Bhagyarajan</span>
                   </div>
                 </div>
 
@@ -84,7 +84,7 @@ export const ContactPage = () => {
                   <div>
                     <strong className="text-white block mb-0.5">Instant WhatsApp</strong>
                     <a
-                      href="https://wa.me/919090104949?text=Hello%20Aurum%20Properties%20Hyderabad"
+                      href="https://wa.me/919090104949?text=Hello%20Mr.%20Rajan%2C%20I%20am%20interested%20in%20Rajan%20Castle%20Properties"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-emerald-400 hover:underline block font-semibold"
@@ -98,8 +98,8 @@ export const ContactPage = () => {
                   <Mail className="w-5 h-5 text-gold-400 shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-white block mb-0.5">Email Inquiries</strong>
-                    <a href="mailto:concierge@hyderabadrealty.com" className="text-gold-300 hover:underline">
-                      concierge@hyderabadrealty.com
+                    <a href="mailto:katla.bhagyarajan@gmail.com" className="text-gold-300 hover:underline">
+                      katla.bhagyarajan@gmail.com
                     </a>
                   </div>
                 </div>
@@ -108,7 +108,7 @@ export const ContactPage = () => {
                   <Clock className="w-5 h-5 text-gold-400 shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-white block mb-0.5">Operational Hours</strong>
-                    <span>Monday through Sunday: 9:00 AM – 8:00 PM IST</span>
+                    <span>Mon - Fri: 9:00 AM – 6:00 PM | Sat - Sun: 10:00 AM – 4:00 PM</span>
                   </div>
                 </div>
               </div>

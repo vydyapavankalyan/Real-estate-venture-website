@@ -17,6 +17,8 @@ import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { LocationsPage } from './pages/LocationsPage';
 import { FutureDevelopmentPage } from './pages/FutureDevelopmentPage';
 import { ServicesPage } from './pages/ServicesPage';
+import { MessagePage } from './pages/MessagePage';
+import { ArticlesPage } from './pages/ArticlesPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { LoginPage } from './pages/LoginPage';
@@ -147,6 +149,75 @@ export function AppContent() {
                   onOpenSiteVisit={handleOpenSiteVisit}
                   onOpenEnquiry={handleOpenEnquiry}
                 />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        {/* Alias /properties from reference website */}
+        <Route
+          path="/properties"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <ProjectsPage
+                  onOpenSiteVisit={handleOpenSiteVisit}
+                  onOpenEnquiry={handleOpenEnquiry}
+                />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        {/* /message: Founder's Message from Mr. Rajan */}
+        <Route
+          path="/message"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <MessagePage
+                  onOpenEnquiry={handleOpenEnquiry}
+                  onOpenSiteVisit={handleOpenSiteVisit}
+                />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        {/* /articles: Development updates, Master plans & Video Hub */}
+        <Route
+          path="/articles"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <ArticlesPage onOpenEnquiry={handleOpenEnquiry} />
               </main>
               <Footer />
               <MobileStickyBar
