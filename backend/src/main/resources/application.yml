@@ -1,0 +1,39 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: hyderabad-real-estate-backend
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/venture
+      auto-index-creation: true
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 30MB
+
+app:
+  jwt:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    expiration-ms: 86400000 # 24 hours
+    refresh-expiration-ms: 604800000 # 7 days
+  upload:
+    dir: ./uploads
+  cors:
+    allowed-origins: "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173"
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+logging:
+  level:
+    com.hyderabadrealty: DEBUG
+    org.springframework.data.mongodb: INFO
+    org.springframework.security: INFO

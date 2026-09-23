@@ -1,0 +1,355 @@
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { projectService } from './services/projectService';
+
+// Common Components
+import { Navbar } from './components/common/Navbar';
+import { Footer } from './components/common/Footer';
+import { MobileStickyBar } from './components/common/MobileStickyBar';
+import { EnquiryModal } from './components/leads/EnquiryModal';
+import { SiteVisitModal } from './components/leads/SiteVisitModal';
+
+// Public Pages
+import { HomePage } from './pages/HomePage';
+import { ProjectsPage } from './pages/ProjectsPage';
+import { ProjectDetailPage } from './pages/ProjectDetailPage';
+import { LocationsPage } from './pages/LocationsPage';
+import { FutureDevelopmentPage } from './pages/FutureDevelopmentPage';
+import { ServicesPage } from './pages/ServicesPage';
+import { AboutPage } from './pages/AboutPage';
+import { ContactPage } from './pages/ContactPage';
+import { LoginPage } from './pages/LoginPage';
+
+// Admin Pages & Layout
+import { AdminLayout } from './layouts/AdminLayout';
+import { DashboardPage } from './pages/admin/DashboardPage';
+import { AdminProjectsPage } from './pages/admin/AdminProjectsPage';
+import { AdminLeadsPage } from './pages/admin/AdminLeadsPage';
+import { AdminSiteVisitsPage } from './pages/admin/AdminSiteVisitsPage';
+import { AdminFutureDevPage } from './pages/admin/AdminFutureDevPage';
+
+// Scroll to top helper on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+// Protected Route Guard for Staff/Admin Area
+function ProtectedAdminRoute({ children }) {
+  const { user, loading, isAdmin } = useAuth();
+  const location = useLocation();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-obsidian-950 flex items-center justify-center">
+        <div className="w-10 h-10 border-4 border-gold-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen bg-obsidian-950 flex flex-col items-center justify-center p-6 text-center">
+        <h2 className="text-2xl font-serif font-bold text-white mb-2">Access Restricted</h2>
+        <p className="text-slate-400 text-sm mb-6">Staff or Administrator credentials required to access the operations console.</p>
+      </div>
+    );
+  }
+
+  return children;
+}
+
+export function AppContent() {
+  const [isSiteVisitOpen, setIsSiteVisitOpen] = useState(false);
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [projectsList, setProjectsList] = useState([]);
+
+  useEffect(() => {
+    projectService.getAll({ size: 50 })
+      .then((res) => {
+        setProjectsList(res.content || []);
+      })
+      .catch((err) => console.error('Failed to load project list for modal:', err));
+  }, []);
+
+  const handleOpenSiteVisit = (project = null) => {
+    setSelectedProject(project);
+    setIsSiteVisitOpen(true);
+  };
+
+  const handleOpenEnquiry = (project = null) => {
+    setSelectedProject(project);
+    setIsEnquiryOpen(true);
+  };
+
+  return (
+    <>
+      <ScrollToTop />
+
+      {/* Global Action Modals */}
+      <SiteVisitModal
+        isOpen={isSiteVisitOpen}
+        onClose={() => setIsSiteVisitOpen(false)}
+        projects={projectsList}
+        preselectedProject={selectedProject}
+      />
+
+      <EnquiryModal
+        isOpen={isEnquiryOpen}
+        onClose={() => setIsEnquiryOpen(false)}
+        defaultProject={selectedProject}
+      />
+
+      <Routes>
+        {/* Public Routes with Navbar and Footer */}
+        <Route
+          path="/"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <HomePage
+                  onOpenSiteVisit={handleOpenSiteVisit}
+                  onOpenEnquiry={handleOpenEnquiry}
+                />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        <Route
+          path="/projects"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <ProjectsPage
+                  onOpenSiteVisit={handleOpenSiteVisit}
+                  onOpenEnquiry={handleOpenEnquiry}
+                />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        <Route
+          path="/projects/:slug"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <ProjectDetailPage
+                  onOpenSiteVisit={handleOpenSiteVisit}
+                  onOpenEnquiry={handleOpenEnquiry}
+                />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        <Route
+          path="/locations"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <LocationsPage />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        <Route
+          path="/future-development"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <FutureDevelopmentPage onOpenEnquiry={handleOpenEnquiry} />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        <Route
+          path="/services"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <ServicesPage
+                  onOpenEnquiry={handleOpenEnquiry}
+                  onOpenSiteVisit={handleOpenSiteVisit}
+                />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        {/* Alias /insights to ServicesPage */}
+        <Route
+          path="/insights"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <ServicesPage
+                  onOpenEnquiry={handleOpenEnquiry}
+                  onOpenSiteVisit={handleOpenSiteVisit}
+                />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        <Route
+          path="/about"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <AboutPage onOpenEnquiry={handleOpenEnquiry} />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        <Route
+          path="/contact"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <ContactPage />
+              </main>
+              <Footer />
+              <MobileStickyBar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+            </div>
+          }
+        />
+
+        <Route
+          path="/login"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow flex items-center justify-center p-4">
+                <LoginPage />
+              </main>
+              <Footer />
+            </div>
+          }
+        />
+
+        {/* Protected Operations Portal Routes */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedAdminRoute>
+              <AdminLayout />
+            </ProtectedAdminRoute>
+          }
+        >
+          <Route index element={<DashboardPage />} />
+          <Route path="projects" element={<AdminProjectsPage />} />
+          <Route path="leads" element={<AdminLeadsPage />} />
+          <Route path="site-visits" element={<AdminSiteVisitsPage />} />
+          <Route path="future-dev" element={<AdminFutureDevPage />} />
+        </Route>
+
+        {/* Catch-all redirect */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
+}
