@@ -3,7 +3,7 @@ import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
   LayoutDashboard, Building, Users, Calendar, Train,
-  LogOut, Globe, ShieldCheck, ChevronRight
+  LogOut, Globe, ShieldCheck, ChevronRight, FileText
 } from 'lucide-react';
 
 export const AdminLayout = () => {
@@ -16,6 +16,7 @@ export const AdminLayout = () => {
     { name: 'Projects & Galleries', path: '/admin/projects', icon: Building },
     { name: 'Leads & Enquiries CRM', path: '/admin/leads', icon: Users },
     { name: 'Site Visit Bookings', path: '/admin/site-visits', icon: Calendar },
+    { name: 'Blog & Articles CMS', path: '/admin/blog', icon: FileText },
     { name: 'Future Infrastructure', path: '/admin/future-dev', icon: Train },
   ];
 

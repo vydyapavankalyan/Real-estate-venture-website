@@ -1,0 +1,26 @@
+{
+  "name": "Rajan Castle Properties",
+  "short_name": "Rajan Castle",
+  "description": "Premium land investments and real estate ventures in Hyderabad, Telangana. Fourth City Mirkhanpet, Maheshwaram, Kadthal.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#C5A059",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "finance", "real-estate"],
+  "lang": "en-IN"
+}

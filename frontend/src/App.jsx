@@ -39,6 +39,7 @@ import { AdminProjectsPage } from './pages/admin/AdminProjectsPage';
 import { AdminLeadsPage } from './pages/admin/AdminLeadsPage';
 import { AdminSiteVisitsPage } from './pages/admin/AdminSiteVisitsPage';
 import { AdminFutureDevPage } from './pages/admin/AdminFutureDevPage';
+import { AdminBlogPage } from './pages/admin/AdminBlogPage';
 
 // Scroll to top helper on route change
 function ScrollToTop() {
@@ -475,6 +476,7 @@ export function AppContent() {
           <Route path="projects" element={<AdminProjectsPage />} />
           <Route path="leads" element={<AdminLeadsPage />} />
           <Route path="site-visits" element={<AdminSiteVisitsPage />} />
+          <Route path="blog" element={<AdminBlogPage />} />
           <Route path="future-dev" element={<AdminFutureDevPage />} />
         </Route>
 

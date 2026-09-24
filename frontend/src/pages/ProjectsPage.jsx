@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation as useRouterLocation, Link } from 'react-router-dom';
 import { SEO } from '../components/common/SEO';
 import { SEO_DATA } from '../components/common/SEOConfig';
+import { SkeletonGrid } from '../components/common/Skeletons';
 import { projectService } from '../services/projectService';
 import { locationService } from '../services/allServices';
 import { ProjectCard } from '../components/projects/ProjectCard';
@@ -297,11 +298,7 @@ export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
 
         {/* Projects Listing Grid */}
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div key={n} className="h-96 rounded-2xl bg-obsidian-900 border border-white/5 animate-pulse" />
-            ))}
-          </div>
+          <SkeletonGrid count={6} />
         ) : projects.length === 0 ? (
           <div className="text-center py-20 bg-obsidian-900/50 rounded-2xl border border-white/5 space-y-4">
             <Building className="w-12 h-12 text-slate-600 mx-auto" />
