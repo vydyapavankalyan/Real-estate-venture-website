@@ -1,4 +1,4 @@
-# 🏰 Rajan - Castle Properties — Luxury Real Estate Platform (Hyderabad 2026)
+# 🏰 Rajan - Castle Properties — Luxury Real Estate Platform (Hyderabad Future City TG)
 
 <p align="center">
   <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=80" alt="Rajan Castle Properties Banner" width="100%" style="border-radius: 8px; border: 1px solid #C5A059;" />
@@ -564,11 +564,11 @@ See the [LICENSE](LICENSE) file for full details.
     </td>
     <td>
       <h3>Mr. Katla Bhagyarajan</h3>
-      <p><strong>Founder & Managing Director — Rajan - Castle Properties</strong></p>
+      <p><strong> CHAIRMAN  — Rajan - Castle Properties</strong></p>
       <p>
-        📞 <strong>Direct Hotline:</strong> <a href="tel:+919090104949">+91 9090104949</a><br>
+        📞 <strong>Direct Phone:</strong> <a href="tel:+919090104949">+91 9090104949</a><br>
         ✉️ <strong>Official Email:</strong> <a href="mailto:katla.bhagyarajan@gmail.com">katla.bhagyarajan@gmail.com</a><br>
-        🏢 <strong>Office:</strong> Hyderabad, Telangana — 500074 / 500070, India<br>
+        🏢 <strong>Office:</strong> S- 589 MN 65 Chintalkunta, Hyderabad, Telangana — 500074 / 500070, India<br>
         🌐 <strong>Web:</strong> <a href="https://www.rajan-castle-properties.net/">www.rajan-castle-properties.net</a>
       </p>
     </td>
@@ -576,5 +576,5 @@ See the [LICENSE](LICENSE) file for full details.
 </table>
 
 <p align="center">
-  <sub>Built with precision and passion for the future of Hyderabad real estate. © 2026 Rajan - Castle Properties. All Rights Reserved.</sub>
+  <sub>Built with precision and passion for the future of Hyderabad Real Estate. © 2015 Rajan - Castle Properties. All Rights Reserved.</sub>
 </p>
