@@ -81,10 +81,19 @@ export const ComparisonProvider = ({ children }) => {
   );
 };
 
+// Safe hook - returns defaults if used outside provider (prevents ErrorBoundary crash)
 export const useComparison = () => {
   const context = useContext(ComparisonContext);
   if (!context) {
-    throw new Error('useComparison must be used within a ComparisonProvider');
+    return {
+      compareList: [],
+      toggleCompare: () => {},
+      removeFromCompare: () => {},
+      clearCompare: () => {},
+      isComparing: () => false,
+      isModalOpen: false,
+      setIsModalOpen: () => {},
+    };
   }
   return context;
 };

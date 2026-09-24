@@ -9,6 +9,8 @@ import { ValuesSection } from '../components/home/ValuesSection';
 import { WhyInvestSection } from '../components/home/WhyInvestSection';
 import { TestimonialsSection } from '../components/home/TestimonialsSection';
 import { StatsCounter } from '../components/home/StatsCounter';
+import { BankPartnersSection } from '../components/home/BankPartnersSection';
+import { VirtualTourSection } from '../components/home/VirtualTourSection';
 import { EmiRoiCalculator } from '../components/tools/EmiRoiCalculator';
 import { projectService } from '../services/projectService';
 import { ArrowRight, Sparkles, Building, Star, CheckCircle, Shield, Award, Phone, Video, Play } from 'lucide-react';
@@ -336,6 +338,12 @@ export const HomePage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
           </div>
         </div>
       </section>
+
+      {/* Bank Partners & Home Loan Strip */}
+      <BankPartnersSection />
+
+      {/* Virtual Site Tour with YouTube Embed */}
+      <VirtualTourSection />
 
     </div>
   );
