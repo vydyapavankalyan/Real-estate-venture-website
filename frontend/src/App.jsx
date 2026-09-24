@@ -24,7 +24,12 @@ import { ArticlesPage } from './pages/ArticlesPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { CalculatorPage } from './pages/CalculatorPage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { FAQPage } from './pages/FAQPage';
+import { TrackEnquiryPage } from './pages/TrackEnquiryPage';
 import { LoginPage } from './pages/LoginPage';
+import { ErrorBoundary } from './components/common/ErrorBoundary';
 
 // Admin Pages & Layout
 import { AdminLayout } from './layouts/AdminLayout';
@@ -405,6 +410,42 @@ export function AppContent() {
         />
 
         <Route
+          path="/privacy"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar onOpenSiteVisit={() => handleOpenSiteVisit()} onOpenEnquiry={() => handleOpenEnquiry()} />
+              <main className="flex-grow"><PrivacyPage /></main>
+              <Footer />
+              <MobileStickyBar onOpenSiteVisit={() => handleOpenSiteVisit()} onOpenEnquiry={() => handleOpenEnquiry()} />
+            </div>
+          }
+        />
+
+        <Route
+          path="/faq"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar onOpenSiteVisit={() => handleOpenSiteVisit()} onOpenEnquiry={() => handleOpenEnquiry()} />
+              <main className="flex-grow"><FAQPage onOpenEnquiry={handleOpenEnquiry} onOpenSiteVisit={handleOpenSiteVisit} /></main>
+              <Footer />
+              <MobileStickyBar onOpenSiteVisit={() => handleOpenSiteVisit()} onOpenEnquiry={() => handleOpenEnquiry()} />
+            </div>
+          }
+        />
+
+        <Route
+          path="/track-enquiry"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 pb-16 md:pb-0">
+              <Navbar onOpenSiteVisit={() => handleOpenSiteVisit()} onOpenEnquiry={() => handleOpenEnquiry()} />
+              <main className="flex-grow"><TrackEnquiryPage /></main>
+              <Footer />
+              <MobileStickyBar onOpenSiteVisit={() => handleOpenSiteVisit()} onOpenEnquiry={() => handleOpenEnquiry()} />
+            </div>
+          }
+        />
+
+        <Route
           path="/login"
           element={
             <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100">
@@ -436,8 +477,22 @@ export function AppContent() {
           <Route path="future-dev" element={<AdminFutureDevPage />} />
         </Route>
 
-        {/* Catch-all redirect */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* Catch-all 404 */}
+        <Route
+          path="*"
+          element={
+            <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100">
+              <Navbar
+                onOpenSiteVisit={() => handleOpenSiteVisit()}
+                onOpenEnquiry={() => handleOpenEnquiry()}
+              />
+              <main className="flex-grow">
+                <NotFoundPage />
+              </main>
+              <Footer />
+            </div>
+          }
+        />
       </Routes>
 
       {/* Floating 24/7 WhatsApp Concierge Widget */}
@@ -449,8 +504,10 @@ export function AppContent() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <AppContent />
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }

@@ -106,6 +106,9 @@ export const Footer = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 pt-6 border-t border-white/5 gap-4">
           <p>© 2026 Rajan - Castle Properties. All rights reserved.</p>
           <div className="flex items-center gap-6">
+            <Link to="/faq" className="hover:text-gold-400">FAQ</Link>
+            <Link to="/track-enquiry" className="hover:text-gold-400">Track Enquiry</Link>
+            <Link to="/privacy" className="hover:text-gold-400">Privacy & Terms</Link>
             <Link to="/contact" className="hover:text-gold-400">Contact Concierge</Link>
             <Link to="/admin" className="hover:text-gold-400">Staff Portal</Link>
           </div>
