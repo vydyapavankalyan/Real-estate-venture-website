@@ -171,7 +171,7 @@ export const ContactPage = () => {
                       <input
                         type="text"
                         required
-                        placeholder="e.g. Vikram Reddy"
+                        placeholder=""
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-3.5 py-2.5 rounded-lg bg-obsidian-950 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-gold-500 text-xs"
@@ -183,7 +183,7 @@ export const ContactPage = () => {
                       <input
                         type="tel"
                         required
-                        placeholder="+91 98490 XXXXX"
+                        placeholder=""
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full px-3.5 py-2.5 rounded-lg bg-obsidian-950 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-gold-500 text-xs"
@@ -195,7 +195,7 @@ export const ContactPage = () => {
                     <label className="block text-slate-300 mb-1 font-medium">Email Address</label>
                     <input
                       type="email"
-                      placeholder="name@example.com"
+                      placeholder=""
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-lg bg-obsidian-950 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-gold-500 text-xs"
