@@ -6,13 +6,16 @@ import { SkeletonGrid } from '../components/common/Skeletons';
 import { projectService } from '../services/projectService';
 import { locationService } from '../services/allServices';
 import { ProjectCard } from '../components/projects/ProjectCard';
-import { Search, Filter, SlidersHorizontal, MapPin, Building, RotateCcw, Sparkles, CheckCircle2, ArrowRight, Calculator } from 'lucide-react';
+import { Search, Filter, SlidersHorizontal, MapPin, Building, RotateCcw, Sparkles, CheckCircle2, ArrowRight, Calculator, LayoutGrid, List, Scale } from 'lucide-react';
+import { useComparison } from '../context/ComparisonContext';
 
 export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
   const routerLocation = useRouterLocation();
   const [projects, setProjects] = useState([]);
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [viewMode, setViewMode] = useState('grid');
+  const { toggleCompare, isComparing } = useComparison();
 
   // Filters state initialized from query params if present
   const queryParams = new URLSearchParams(routerLocation.search);
@@ -279,6 +282,30 @@ export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
               Showing <strong className="text-white">{projects.length}</strong> of {totalElements} properties
             </span>
             <div className="flex items-center gap-3">
+              {/* View Switcher */}
+              <div className="flex items-center gap-1 p-1 bg-obsidian-950 border border-white/10 rounded-lg">
+                <button
+                  type="button"
+                  onClick={() => setViewMode('grid')}
+                  className={`p-1.5 rounded-md transition-colors ${
+                    viewMode === 'grid' ? 'bg-gold-500 text-obsidian-950 font-bold' : 'text-slate-400 hover:text-white'
+                  }`}
+                  title="Card Grid View"
+                >
+                  <LayoutGrid className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setViewMode('list')}
+                  className={`p-1.5 rounded-md transition-colors ${
+                    viewMode === 'list' ? 'bg-gold-500 text-obsidian-950 font-bold' : 'text-slate-400 hover:text-white'
+                  }`}
+                  title="Compact Investor Portfolio View"
+                >
+                  <List className="w-3.5 h-3.5" />
+                </button>
+              </div>
+
               <button
                 onClick={handleReset}
                 className="px-3 py-1.5 rounded-lg text-xs text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors"
@@ -296,7 +323,7 @@ export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
           </div>
         </div>
 
-        {/* Projects Listing Grid */}
+        {/* Projects Listing */}
         {loading ? (
           <SkeletonGrid count={6} />
         ) : projects.length === 0 ? (
@@ -313,7 +340,7 @@ export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
               Clear All Filters
             </button>
           </div>
-        ) : (
+        ) : viewMode === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
               <ProjectCard
@@ -323,6 +350,95 @@ export const ProjectsPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
                 onOpenEnquiry={() => onOpenEnquiry(project)}
               />
             ))}
+          </div>
+        ) : (
+          /* Compact Investor Portfolio View */
+          <div className="bg-obsidian-900 border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs text-slate-300">
+                <thead className="bg-obsidian-950/80 text-[10px] uppercase font-serif tracking-widest text-gold-400 border-b border-white/10">
+                  <tr>
+                    <th className="py-4 px-5">Venture / Project</th>
+                    <th className="py-4 px-5">Corridor / Location</th>
+                    <th className="py-4 px-5">Type</th>
+                    <th className="py-4 px-5">Starting Price</th>
+                    <th className="py-4 px-5">Scale / Land</th>
+                    <th className="py-4 px-5">Possession</th>
+                    <th className="py-4 px-5 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {projects.map((project) => (
+                    <tr key={project.id} className="hover:bg-white/[0.02] transition-colors">
+                      <td className="py-4 px-5">
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={project.coverImageUrl || project.gallery?.[0]?.url || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=100&q=80'}
+                            alt={project.projectName}
+                            className="w-12 h-10 rounded-lg object-cover shrink-0"
+                          />
+                          <div>
+                            <Link to={`/projects/${project.slug}`} className="font-serif font-bold text-white hover:text-gold-300 text-sm block">
+                              {project.projectName}
+                            </Link>
+                            <span className="text-[10px] text-slate-500 font-mono">
+                              RERA: {project.reraNumber || 'Verified'}
+                            </span>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="py-4 px-5 font-medium text-slate-200">
+                        <div className="flex items-center gap-1.5">
+                          <MapPin className="w-3.5 h-3.5 text-gold-400 shrink-0" />
+                          <span>{project.location?.area || 'Hyderabad'}</span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-5">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-white/5 border border-white/10 text-slate-300">
+                          {project.propertyType}
+                        </span>
+                      </td>
+                      <td className="py-4 px-5 font-serif font-bold text-gold-300 text-sm">
+                        {project.price?.priceDisplay || 'Price on Request'}
+                      </td>
+                      <td className="py-4 px-5 text-slate-400">
+                        {project.landArea || 'Strategic Acreage'}
+                      </td>
+                      <td className="py-4 px-5 text-slate-300">
+                        {project.possessionDate || 'Immediate'}
+                      </td>
+                      <td className="py-4 px-5 text-right">
+                        <div className="flex items-center justify-end gap-2">
+                          <button
+                            onClick={() => toggleCompare(project)}
+                            className={`p-1.5 rounded-lg border text-xs transition-colors ${
+                              isComparing(project)
+                                ? 'bg-gold-500 text-obsidian-950 border-gold-500 font-bold'
+                                : 'text-slate-400 hover:text-white border-white/10 hover:border-white/20'
+                            }`}
+                            title="Compare"
+                          >
+                            <Scale className="w-3.5 h-3.5" />
+                          </button>
+                          <Link
+                            to={`/projects/${project.slug}`}
+                            className="px-3 py-1.5 rounded-lg border border-white/15 text-slate-300 hover:text-white hover:border-gold-400/50 text-xs font-semibold transition-colors"
+                          >
+                            Details
+                          </Link>
+                          <button
+                            onClick={() => onOpenSiteVisit(project)}
+                            className="px-3 py-1.5 rounded-lg bg-gold-500 text-obsidian-950 font-bold text-xs uppercase tracking-wider hover:bg-gold-400 transition-colors"
+                          >
+                            Visit
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
 
