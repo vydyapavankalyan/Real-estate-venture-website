@@ -5,42 +5,72 @@
 @layer base {
   body {
     @apply bg-obsidian-950 text-slate-100 font-sans antialiased;
+    /* Subtle navy-to-deeper-navy gradient for depth */
+    background: linear-gradient(160deg, #071526 0%, #050E1C 60%, #040C18 100%);
+    min-height: 100vh;
   }
 }
 
-/* Custom luxury scrollbar */
+/* ── Luxury Navy Scrollbar ─────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: #050E1C;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #1E3A5F;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c5a059;
+  background: #C5A059;
 }
 
-/* Leaflet dark theme map enhancements */
+/* ── Leaflet map — navy dark theme ─────────────────────── */
 .leaflet-container {
-  background-color: #0b1120 !important;
+  background-color: #091629 !important;
   font-family: inherit;
 }
 
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
-  background: #070c18 !important;
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #091629 !important;
   color: #f1f5f9 !important;
-  border: 1px solid rgba(197, 160, 89, 0.3) !important;
+  border: 1px solid rgba(197, 160, 89, 0.35) !important;
   border-radius: 12px !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
 }
 
 .leaflet-popup-content {
   margin: 12px 14px !important;
+}
+
+/* ── Smooth page transitions ───────────────────────────── */
+* {
+  scroll-behavior: smooth;
+}
+
+/* ── Navy glass card utility ───────────────────────────── */
+.glass-card {
+  background: rgba(9, 22, 41, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 160, 89, 0.12);
+}
+
+/* ── Gold text shimmer ─────────────────────────────────── */
+.gold-shimmer {
+  background: linear-gradient(90deg, #C5A059, #E8C97A, #C5A059);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
 }
