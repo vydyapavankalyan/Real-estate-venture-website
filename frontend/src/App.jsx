@@ -12,6 +12,9 @@ import { ScrollToTopButton } from './components/common/ScrollToTopButton';
 import { CookieConsent } from './components/common/CookieConsent';
 import { EnquiryModal } from './components/leads/EnquiryModal';
 import { SiteVisitModal } from './components/leads/SiteVisitModal';
+import { ComparisonProvider } from './context/ComparisonContext';
+import { CompareFloatingBar } from './components/projects/CompareFloatingBar';
+import { PropertyComparisonModal } from './components/projects/PropertyComparisonModal';
 
 // Public Pages
 import { HomePage } from './pages/HomePage';
@@ -502,6 +505,13 @@ export function AppContent() {
       <WhatsAppWidget />
       <ScrollToTopButton />
       <CookieConsent />
+
+      {/* Property Comparison Dock & Modal */}
+      <CompareFloatingBar />
+      <PropertyComparisonModal
+        onOpenSiteVisit={(p) => handleOpenSiteVisit(p)}
+        onOpenEnquiry={(p) => handleOpenEnquiry(p)}
+      />
     </>
   );
 }
@@ -510,7 +520,9 @@ export default function App() {
   return (
     <ErrorBoundary>
       <AuthProvider>
-        <AppContent />
+        <ComparisonProvider>
+          <AppContent />
+        </ComparisonProvider>
       </AuthProvider>
     </ErrorBoundary>
   );

@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Building, Calendar, ArrowRight, ShieldCheck, Check } from 'lucide-react';
+import { MapPin, Building, Calendar, ArrowRight, ShieldCheck, Check, Scale } from 'lucide-react';
+import { useComparison } from '../../context/ComparisonContext';
 
 export const ProjectCard = ({ project, onOpenSiteVisit, onOpenEnquiry }) => {
+  const { toggleCompare, isComparing } = useComparison();
+  const comparing = isComparing(project);
+
   const statusColor = {
     'READY_TO_MOVE': 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
     'UNDER_CONSTRUCTION': 'bg-gold-500/20 text-gold-300 border-gold-500/30',
@@ -37,6 +41,23 @@ export const ProjectCard = ({ project, onOpenSiteVisit, onOpenEnquiry }) => {
             {project.propertyType}
           </span>
         </div>
+
+        {/* Compare Toggle Button */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleCompare(project);
+          }}
+          className={`absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider backdrop-blur-md transition-all ${
+            comparing
+              ? 'bg-gold-500 text-obsidian-950 shadow-luxury'
+              : 'bg-black/60 text-slate-300 hover:text-white border border-white/20 hover:border-gold-500/50'
+          }`}
+          title="Compare property side-by-side"
+        >
+          <Scale className="w-3 h-3" />
+          <span>{comparing ? 'Comparing' : 'Compare'}</span>
+        </button>
 
         {/* Pricing badge */}
         <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">

@@ -3,12 +3,14 @@ import { useParams, Link } from 'react-router-dom';
 import { projectService } from '../services/projectService';
 import { ProjectGalleryViewer } from '../components/projects/ProjectGalleryViewer';
 import { ProjectLocationMap } from '../components/projects/ProjectLocationMap';
+import { BrochureDownloadModal } from '../components/projects/BrochureDownloadModal';
 import { ShareButtons } from '../components/common/ShareButtons';
 import { SEO } from '../components/common/SEO';
+import { useComparison } from '../context/ComparisonContext';
 import {
   MapPin, Building, Calendar, IndianRupee, Layers, ShieldCheck,
   Download, Phone, Car, Share2, Sparkles, Check, CheckCircle2,
-  FileText, Home, ArrowLeft
+  FileText, Home, ArrowLeft, Scale
 } from 'lucide-react';
 
 export const ProjectDetailPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
@@ -16,6 +18,8 @@ export const ProjectDetailPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeFloorPlan, setActiveFloorPlan] = useState(0);
+  const [isBrochureOpen, setIsBrochureOpen] = useState(false);
+  const { toggleCompare, isComparing } = useComparison();
 
   useEffect(() => {
     projectService.getBySlug(slug)
@@ -301,10 +305,30 @@ export const ProjectDetailPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
 
                   <button
                     onClick={() => onOpenEnquiry(project)}
-                    className="w-full py-3.5 rounded-xl border border-gold-500/40 text-gold-300 font-semibold text-xs uppercase tracking-wider hover:bg-gold-500/10 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3 rounded-xl border border-gold-500/40 text-gold-300 font-semibold text-xs uppercase tracking-wider hover:bg-gold-500/10 transition-all flex items-center justify-center gap-2"
                   >
                     <Phone className="w-4 h-4" />
                     <span>Request Callback</span>
+                  </button>
+
+                  <button
+                    onClick={() => setIsBrochureOpen(true)}
+                    className="w-full py-3 rounded-xl bg-white/[0.06] border border-white/15 text-white hover:border-gold-400/60 hover:text-gold-300 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                  >
+                    <Download className="w-4 h-4 text-gold-400" />
+                    <span>Download Brochure (PDF)</span>
+                  </button>
+
+                  <button
+                    onClick={() => toggleCompare(project)}
+                    className={`w-full py-2.5 rounded-xl border text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
+                      isComparing(project)
+                        ? 'bg-gold-500/20 border-gold-500 text-gold-300'
+                        : 'border-white/10 text-slate-400 hover:text-white hover:border-white/20'
+                    }`}
+                  >
+                    <Scale className="w-3.5 h-3.5" />
+                    <span>{isComparing(project) ? 'Remove From Compare' : 'Add To Compare'}</span>
                   </button>
                 </div>
 
@@ -346,6 +370,13 @@ export const ProjectDetailPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
 
         </div>
       </div>
+
+      {/* Brochure Download Lead Modal */}
+      <BrochureDownloadModal
+        project={project}
+        isOpen={isBrochureOpen}
+        onClose={() => setIsBrochureOpen(false)}
+      />
     </div>
   );
 };
