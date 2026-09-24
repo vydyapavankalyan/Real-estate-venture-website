@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { projectService } from '../services/projectService';
 import { ProjectGalleryViewer } from '../components/projects/ProjectGalleryViewer';
 import { ProjectLocationMap } from '../components/projects/ProjectLocationMap';
+import { ShareButtons } from '../components/common/ShareButtons';
+import { SEO } from '../components/common/SEO';
 import {
   MapPin, Building, Calendar, IndianRupee, Layers, ShieldCheck,
   Download, Phone, Car, Share2, Sparkles, Check, CheckCircle2,
@@ -44,6 +46,10 @@ export const ProjectDetailPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
 
   return (
     <div className="min-h-screen bg-obsidian-950 text-slate-100 pb-24">
+      <SEO
+        title={project.projectName}
+        description={`${project.projectName} — ${project.location?.area}, Hyderabad. ${project.price?.priceDisplay || 'Price on Request'}. Premium real estate by Rajan Castle Properties.`}
+      />
       
       {/* 1. Hero Cover Banner */}
       <div className="relative h-[65vh] min-h-[450px] overflow-hidden bg-obsidian-950">
@@ -106,6 +112,11 @@ export const ProjectDetailPage = ({ onOpenSiteVisit, onOpenEnquiry }) => {
           
           {/* Main Content (Left 2 cols) */}
           <div className="lg:col-span-2 space-y-14">
+            
+            {/* Share row */}
+            <div className="flex items-center justify-end">
+              <ShareButtons title={project.projectName} />
+            </div>
             
             {/* Project Overview Stats Grid */}
             <div className="p-6 rounded-2xl bg-obsidian-900 border border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6">
