@@ -10,11 +10,11 @@ export const Navbar = ({ onOpenSiteVisit, onOpenEnquiry }) => {
 
   const navLinks = [
     { name: 'Projects', path: '/properties' },
-    { name: 'Message', path: '/message' },
-    { name: 'Services', path: '/services' },
-    { name: 'Articles', path: '/articles' },
     { name: 'Fourth City', path: '/future-development' },
     { name: 'Calculator', path: '/calculator' },
+    { name: 'Services', path: '/services' },
+    { name: 'Articles', path: '/articles' },
+    { name: 'FAQ', path: '/faq' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];

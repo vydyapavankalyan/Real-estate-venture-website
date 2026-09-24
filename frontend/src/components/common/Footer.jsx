@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Building2, Shield, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { NewsletterWidget } from './NewsletterWidget';
 
 export const Footer = () => {
   return (
@@ -77,17 +78,9 @@ export const Footer = () => {
           </div>
 
           {/* Infrastructure Themes */}
+          {/* Newsletter */}
           <div className="space-y-3">
-            <h4 className="text-xs uppercase tracking-widest font-semibold text-white font-serif">
-              Infrastructure
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li><Link to="/articles" className="hover:text-gold-400 transition-colors">Young India Skill University</Link></li>
-              <li><Link to="/articles" className="hover:text-gold-400 transition-colors">Amazon Data Center (₹5,809 Cr)</Link></li>
-              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">300ft Greenfield Highway</Link></li>
-              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">330ft Road Connectivity</Link></li>
-              <li><Link to="/future-development" className="hover:text-gold-400 transition-colors">Regional Ring Road (RRR)</Link></li>
-            </ul>
+            <NewsletterWidget />
           </div>
         </div>
 
