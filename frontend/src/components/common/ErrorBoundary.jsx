@@ -4,7 +4,7 @@ import { AlertTriangle, RefreshCw, Phone } from 'lucide-react';
 export class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hasError: false, error: null };
+    this.state = { hasError: false, error: null, info: null };
   }
 
   static getDerivedStateFromError(error) {
@@ -12,11 +12,15 @@ export class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    console.error('[ErrorBoundary]', error, info);
+    console.error('[ErrorBoundary] ERROR:', error?.message);
+    console.error('[ErrorBoundary] STACK:', error?.stack);
+    console.error('[ErrorBoundary] COMPONENT STACK:', info?.componentStack);
+    this.setState({ info });
   }
 
   render() {
     if (this.state.hasError) {
+      const isDev = import.meta.env.DEV;
       return (
         <div className="min-h-screen bg-obsidian-950 flex flex-col items-center justify-center text-center px-4 py-24">
           <div className="w-16 h-16 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center mb-6">
@@ -27,6 +31,24 @@ export class ErrorBoundary extends React.Component {
           <p className="text-slate-400 text-sm max-w-md leading-relaxed mb-8">
             An unexpected error occurred. Please reload the page. If the issue persists, contact our support team.
           </p>
+
+          {/* Show real error in dev mode */}
+          {isDev && this.state.error && (
+            <div className="w-full max-w-2xl mb-8 text-left">
+              <div className="bg-red-950/60 border border-red-500/40 rounded-xl p-4 mb-3">
+                <p className="text-xs font-bold text-red-400 uppercase tracking-wider mb-1">Error Message</p>
+                <p className="text-sm text-red-200 font-mono">{this.state.error.message}</p>
+              </div>
+              {this.state.info?.componentStack && (
+                <div className="bg-obsidian-900 border border-white/10 rounded-xl p-4 overflow-auto max-h-48">
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Component Stack</p>
+                  <pre className="text-[10px] text-slate-400 font-mono whitespace-pre-wrap">
+                    {this.state.info.componentStack}
+                  </pre>
+                </div>
+              )}
+            </div>
+          )}
 
           <div className="flex flex-col sm:flex-row gap-4">
             <button

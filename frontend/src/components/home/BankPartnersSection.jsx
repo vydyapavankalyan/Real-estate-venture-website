@@ -56,7 +56,7 @@ export const BankPartnersSection = () => {
             { icon: Users, label: 'NRI Loans', sub: 'Dollar & Rupee accounts', color: 'text-sky-400' },
             { icon: Globe, label: 'Doorstep Service', sub: 'Bank exec visits you', color: 'text-purple-400' },
           ].map((item) => (
-            <div key={item.label} className="flex items-center gap-3 p-4 rounded-2xl bg-obsidian-900 border border-white/8">
+            <div key={item.label} className="flex items-center gap-3 p-4 rounded-2xl bg-obsidian-900 border border-white/10">
               <div className={`w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center shrink-0 ${item.color}`}>
                 <item.icon className="w-4 h-4" />
               </div>

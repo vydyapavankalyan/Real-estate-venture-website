@@ -89,7 +89,7 @@ export function AppContent() {
   const [projectsList, setProjectsList] = useState([]);
 
   useEffect(() => {
-    projectService.getAll({ size: 50 })
+    projectService.search({ size: 50 })
       .then((res) => {
         setProjectsList(res.content || []);
       })
